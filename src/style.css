@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&family=Roboto:wght@300&display=swap');
+
+:root{
+    --main-color: #141516;
+    --secondary-color: #ECF0F1;
+    --card-color: #181818;
+    --card-color-focus: rgb(34, 34, 34);
+    --card-border: #2b2a2a;
+
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body{
+    font-family: "Rubik", sans-serif;
+    background-size: 40px 40px;
+    background-image: radial-gradient(circle, var(--secondary-color) 1px, var(--main-color) 1px);
+    min-height: 100vh;
+}
+
+.header{
+    position: relative;
+    padding-top: 5vmin;
+}
+.svg-title{
+    width: 100%;
+}
+.headr-text{
+    position: relative;
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+.main-text {
+    fill: transparent;
+    stroke: var(--secondary-color);
+    stroke-linejoin: round;
+    stroke-dasharray: 50;
+    animation: animate 2s linear infinite;
+}
+.shadow-text{
+    opacity: 0.2;
+    fill: var(--secondary-color);
+}
+
+@keyframes animate{
+    100%{
+        stroke-dashoffset: 100;
+    }
+}
+
+.code{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items:baseline;
+    margin: 0 auto;
+    height: 70vh;
+}
+
+.code-card{
+    --shadow: .5em;
+    position: relative;
+    background-color: var(--card-color);
+    line-break: strict;
+    width: 40%;
+    box-shadow: var(--shadow) var(--shadow) var(--shadow) black;
+    height: 100%;
+    display: block;
+}
+
+.code-overlap{
+    position: absolute;
+    top: 0;
+    opacity: .8;
+    left: 0; right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.code-overlap > i{
+    color: var(--secondary-color);
+    font-size: 15vmin;
+    width: auto;
+}
+.code-overlap > h1{
+    color: var(--secondary-color);
+    width: auto;
+    font-size: 6vmin;
+    text-align: center;
+}
+
+.code-card > textarea{
+    color: var(--secondary-color);
+    padding: 2em;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    resize: none;
+}
+
+.code-card > code{
+    outline: none
+}
+
+
+.code-card::after{
+    content: '| - | O | X  ';
+    text-align: right;
+    width: 100%;
+    background-color: var(--card-border);
+    top: -1.1em;
+    right: 0;
+    padding: 0 .3em;
+    position: absolute;
+    z-index: 10;
+}
