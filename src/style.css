@@ -66,6 +66,7 @@ body{
     height: 70vh;
 }
 
+
 .code-card{
     --shadow: .5em;
     position: relative;
@@ -74,7 +75,12 @@ body{
     width: 40%;
     box-shadow: var(--shadow) var(--shadow) var(--shadow) black;
     height: 100%;
-    display: block;
+}
+
+
+.textbox{
+    height: 100%;
+    content: 'asds';
 }
 
 .code-overlap{
@@ -83,6 +89,12 @@ body{
     opacity: .8;
     left: 0; right: 0;
     height: 100%;
+    display: none;
+    pointer-events: none;
+}
+
+
+.code-overlap:has(+ .language-js:empty){
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,26 +109,16 @@ body{
 .code-overlap > h1{
     color: var(--secondary-color);
     width: auto;
-    font-size: 6vmin;
+    font-size: 5vmin;
     text-align: center;
 }
 
-.code-card > textarea{
-    color: var(--secondary-color);
-    padding: 2em;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    border: none;
-    resize: none;
-}
-
 .code-card > code{
-    outline: none
+    outline: none;
 }
 
 
-.code-card::after{
+/* .code-card::after{
     content: '| - | O | X  ';
     text-align: right;
     width: 100%;
@@ -126,4 +128,4 @@ body{
     padding: 0 .3em;
     position: absolute;
     z-index: 10;
-}
+} */
