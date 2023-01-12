@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&family=Roboto:wght@300&display=swap');
 
 :root{
-    --main-color: #141516;
-    --secondary-color: #ECF0F1;
-    --card-color: #181818;
-    --card-color-focus: rgb(34, 34, 34);
-    --card-border: #2b2a2a;
-
+    --card-bg-color: #F5F5F5;
+    --dark-card-bg-color: #486077;
+    --error-color: rgba(182, 37, 37, 0.933);
+    --correct-color: #2e8555;
+    --main-card-width: 100vmin;
+    --bg-color: #2f3141;
+    --card-height: 70vmin; 
+    --color: #222020;
+    --color-hover: #6697c5;
 }
 
 *,
@@ -16,116 +19,103 @@
     position: relative;
     padding: 0;
     margin: 0;
+
 }
+
 
 html,
 body{
     font-family: "Rubik", sans-serif;
-    background-size: 40px 40px;
-    background-image: radial-gradient(circle, var(--secondary-color) 1px, var(--main-color) 1px);
+    background-color: var(--bg-color);
+    word-wrap: break-word; 
+    color: var(--color);
     min-height: 100vh;
 }
 
-.header{
-    position: relative;
-    padding-top: 5vmin;
-}
-.svg-title{
-    width: 100%;
-}
-.headr-text{
-    position: relative;
-    font-size: 6rem;
-    font-weight: bold;
+.error, .correct{
+    box-shadow:var(--shadow-color) 0px 0px 2vmin; 
 }
 
-.main-text {
-    fill: transparent;
-    stroke: var(--secondary-color);
-    stroke-linejoin: round;
-    stroke-dasharray: 50;
-    animation: animate 2s linear infinite;
-}
-.shadow-text{
-    opacity: 0.2;
-    fill: var(--secondary-color);
+.correct{
+    --shadow-color: var(--correct-color);
 }
 
-@keyframes animate{
-    100%{
-        stroke-dashoffset: 100;
-    }
+.correct{
+    --shadow-color: var(--correct-color);
 }
 
-.code{
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    align-items:baseline;
-    margin: 0 auto;
-    height: 70vh;
+@keyframes onclick {
+    0%{transform: scale(1);}
+    33%{transform: scale(1.5); opacity: 1;}
+    66%{transform: scale(.5); opacity: .5;}
+    100%{transform: scale(1); opacity: 1;}
 }
 
-
-.code-card{
-    --shadow: .5em;
-    position: relative;
-    background-color: var(--card-color);
-    line-break: strict;
-    width: 40%;
-    box-shadow: var(--shadow) var(--shadow) var(--shadow) black;
-    height: 100%;
-}
-
-
-.textbox{
-    height: 100%;
-    content: 'asds';
-}
-
-.code-overlap{
+.function-footer{
+    --gap: 2vmin;
+    --bg-color: var(--color);
+    font-size: clamp(1rem, 4vmin, 1.5rem);
+    color: var(--dark-card-bg-color);
     position: absolute;
-    top: 0;
-    opacity: .8;
-    left: 0; right: 0;
-    height: 100%;
-    display: none;
-    pointer-events: none;
+    top: var(--gap); right: var(--gap);
+    display: flex; flex-direction: column;
+    gap: max(.5vmin,.5em);
 }
 
 
-.code-overlap:has(+ .language-js:empty){
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.function-footer  *:hover{
+    color: var(--color-hover);
+    transition: color .2s ease-out;
 }
 
-.code-overlap > i{
-    color: var(--secondary-color);
-    font-size: 15vmin;
-    width: auto;
+.animation-onclick{
+    animation: .5s  onclick;
+    animation-direction:alternate;
 }
-.code-overlap > h1{
-    color: var(--secondary-color);
-    width: auto;
-    font-size: 5vmin;
+
+
+.schema-card .function-footer{
+    color: var(--card-bg-color);
+}
+
+.function-footer > *{
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+.main-page{
+    --gap: 5vmin;
+    position: relative;
+    top: 15vmin; bottom: 15vmin;
+    width: 100%; height: 70vh;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: max(1em, var(--gap));
+    padding: var(--gap);
+}
+
+
+.json-card , .schema-card, .pop-up{
+    position: relative;
+    padding: 2vmin;
+    background-color: var(--card-bg-color);
+    border-radius: 3vmin;
+}
+
+.json-card , .schema-card{
+    width: 100%;
+    min-height: 6rem;
+}
+
+.schema-card{
+    background-color: var(--dark-card-bg-color);
+}
+
+.pop-up{
+    position: absolute;
+    display: inline-block;
+    bottom: 4vmin; right: 4vmin;
     text-align: center;
+    width: auto; height: fit-content;
 }
-
-.code-card > code{
-    outline: none;
-}
-
-
-/* .code-card::after{
-    content: '| - | O | X  ';
-    text-align: right;
-    width: 100%;
-    background-color: var(--card-border);
-    top: -1.1em;
-    right: 0;
-    padding: 0 .3em;
-    position: absolute;
-    z-index: 10;
-} */
