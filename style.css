@@ -2,11 +2,11 @@
 
 :root{
     --card-bg-color: #F5F5F5;
-    --dark-card-bg-color: #486077;
+    --dark-card-bg-color: #303c47;
     --error-color: rgba(182, 37, 37, 0.933);
     --correct-color: #2e8555;
     --main-card-width: 100vmin;
-    --bg-color: #2f3141;
+    --bg-color: #191a1d;
     --card-height: 70vmin; 
     --color: #222020;
     --color-hover: #6697c5;
@@ -22,6 +22,19 @@
 
 }
 
+@keyframes onclick {
+    0%{transform: scale(1);}
+    33%{transform: scale(1.5); opacity: 1;}
+    66%{transform: scale(.5); opacity: .5;}
+    100%{transform: scale(1); opacity: 1;}
+}
+
+
+@keyframes popUp {
+    0%{transform: scale(.5); opacity: 0;}
+    33%{transform: scale(1);}
+    100%{opacity: 1;}
+}
 
 html,
 body{
@@ -36,20 +49,15 @@ body{
     box-shadow:var(--shadow-color) 0px 0px 2vmin; 
 }
 
-.correct{
-    --shadow-color: var(--correct-color);
+.error{
+    --shadow-color: var(--error-color);
 }
 
 .correct{
     --shadow-color: var(--correct-color);
 }
 
-@keyframes onclick {
-    0%{transform: scale(1);}
-    33%{transform: scale(1.5); opacity: 1;}
-    66%{transform: scale(.5); opacity: .5;}
-    100%{transform: scale(1); opacity: 1;}
-}
+
 
 .function-footer{
     --gap: 2vmin;
@@ -118,6 +126,8 @@ body{
     bottom: 4vmin; right: 4vmin;
     text-align: center;
     width: auto; height: fit-content;
+    animation: popUp 1.7s;
+    animation-iteration-count: 1;
 }
 
 
