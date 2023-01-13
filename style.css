@@ -212,7 +212,9 @@ body{
 @media screen and (max-width: 900px) {
     .main-page{
         grid-template-columns: 100%;
-        height: 60vmin;
+        height: 70vh;
+        gap: 2vh;
+        padding: 2vh;
     }
     .title{
         font-size: max(1rem,6vmin);
