@@ -99,6 +99,7 @@ body{
 
 .gradient-text{
     animation: background-pan 3s linear infinite;
+    position: relative;
     background: linear-gradient(
         to right,
         var(--grad-purple),
@@ -106,8 +107,8 @@ body{
         var(--grad-pink),
         var(--grad-purple)
     );
-    background-clip: text;
-    color: transparent;
+    background-clip: text; -webkit-background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
     background-size: 200%;
     white-space: nowrap;
     font-size: .7em;
