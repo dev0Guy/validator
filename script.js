@@ -30,6 +30,7 @@ function onCtrlC(elem, child){
     })
 }
 
+
 Array.from(collection).forEach(function (element) {
     activateAnimtionClass(element,"animation-onclick");
 });

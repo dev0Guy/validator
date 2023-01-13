@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&family=Roboto:wght@300&display=swap');
 
 :root{
-    --card-bg-color: #F5F5F5;
-    --dark-card-bg-color: #303c47;
+    --card-bg-color: rgb(40, 40, 40);
+    --dark-card-bg-color: rgb(25, 25, 25);
     --error-color: rgba(182, 37, 37, 0.933);
-    --correct-color: #2e8555;
+    --popup-bg-color: rgb(180, 180, 180);
     --main-card-width: 100vmin;
-    --bg-color: #191a1d;
+    --bg-color: rgb(10, 10, 10);
     --card-height: 70vmin; 
-    --color: #222020;
-    --color-hover: #6697c5;
     --padding: 2vmin;
     --icon-font-size: clamp(1rem, 4vmin, 1.5rem);
-
+    --grad-purple: rgb(123, 31, 162);
+    --grad-violet: rgb(103, 58, 183);
+    --grad-pink: rgb(244, 143, 177);
+    --text-color: rgb(170, 170, 170);
 }
 
 *,
@@ -22,6 +23,9 @@
     position: relative;
     padding: 0;
     margin: 0;
+}
+::selection{
+    background-color: var(--grad-purple);
 }
 
 ::-webkit-scrollbar {
@@ -40,15 +44,12 @@
     border-radius: 1vmin;
 }
 
-
-
 @keyframes onclick {
     0%{transform: scale(1);}
     33%{transform: scale(1.5); opacity: 1;}
     66%{transform: scale(.5); opacity: .5;}
-    100%{transform: scale(1); opacity: 1;}
+    100%{transform: scale(1); opacity: .7;}
 }
-
 
 @keyframes popUp {
     0%{transform: scale(.5); opacity: 0;}
@@ -56,12 +57,22 @@
     100%{opacity: 1;}
 }
 
+@keyframes background-pan {
+    from{
+        background-position: 0% center;
+    }
+    to{
+        background-position: -200% center;
+    }
+}
+
+
 html,
 body{
     font-family: "Rubik", sans-serif;
     background-color: var(--bg-color);
     word-wrap: break-word; 
-    color: var(--color);
+    color: var(--text-color);
     min-height: 100vh;
 }
 
@@ -77,6 +88,49 @@ body{
     --shadow-color: var(--correct-color);
 }
 
+.title{
+    top: 5vmin;
+    font-size: 4rem;
+    text-align: center;
+    height: fit-content;
+    color: var( --text-color);
+    text-transform: uppercase;
+}
+
+.gradient-text{
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--grad-purple),
+        var(--grad-violet),
+        var(--grad-pink),
+        var(--grad-purple)
+    );
+    background-clip: text;
+    color: transparent;
+    background-size: 200%;
+    white-space: nowrap;
+    font-size: .7em;
+}
+
+
+
+.gradient-text::before{
+    animation: background-pan 1s linear infinite;
+    content: '';
+    position: absolute;
+    height: 0.125em;
+    width: 100%;
+    left: 0%; bottom: -0em;
+    border-radius: 0.2em;
+    background: linear-gradient(
+        to right,
+        var(--grad-purple),
+        var(--grad-violet),
+        var(--grad-pink),
+        var(--grad-purple)
+    );
+}
 
 
 .function-footer{
@@ -84,15 +138,9 @@ body{
     font-size: var(--icon-font-size);
     color: var(--dark-card-bg-color);
     position: absolute;
-    top: calc(var(--gap)/2); right:calc(var(--gap)/2); 
+    top: calc(var(--gap)); right:calc(var(--gap)); 
     display: flex; flex-direction: column;
     gap: max(.5vmin,.5em);
-}
-
-
-.function-footer  *:hover{
-    color: var(--color-hover);
-    transition: color .2s ease-out;
 }
 
 .animation-onclick{
@@ -100,24 +148,27 @@ body{
     animation-direction:alternate;
 }
 
-
-.schema-card .function-footer{
-    color: var(--card-bg-color);
-}
-
 .function-footer > *{
     -webkit-user-select: none;
     -ms-user-select: none; 
     user-select: none;
+    color: var(--grad-violet);
+    opacity: .7;
 }
 
+.function-footer > *:hover{
+    transition: opacity .2s ease-in-out;
+    opacity: 1;
+}
+
+
 .main-page{
-    --gap: 5vmin;
+    --gap: 2vmin;
     position: relative;
-    top: 15vmin; bottom: 15vmin;
+    top: 7vmin; bottom: 23vmin;
     width: 100%; height: 70vh;
     display: grid;
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 66% 33%;
     gap: max(1em, var(--gap));
     padding: var(--gap);
 }
@@ -131,8 +182,8 @@ body{
 }
 
 .json-card , .schema-card{
-    width: 100%;
     min-height: 6rem;
+    max-width: 100%;
 }
 
 .schema-card{
@@ -147,6 +198,9 @@ body{
     width: auto; height: fit-content;
     animation: popUp 1.7s;
     animation-iteration-count: 1;
+    background-color: var(--popup-bg-color);
+    color: var(--bg-color);
+    font-weight: bold;
 }
 
 * > .card-text{
